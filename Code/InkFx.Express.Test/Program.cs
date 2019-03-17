@@ -16,8 +16,42 @@ namespace InkFx.Express.Test
             TestHelper.WriteLine(value);
         }
 
+        public static void Main3()
+        {
+            //常规计算
+            object value = ExpressHelper.Calc("1+2+(5*6/3)");
+            Console.WriteLine(value);  //13
+
+
+            //对象计算
+            Student student =new Student();
+            student.Age = 20;
+            student.Name = "张三";
+            object value2 = ExpressHelper.Calc("[Name] + '   ' + LEN([NAME])", student);
+            Console.WriteLine(value2);  //张三   2
+
+            //常量 YYYY
+            object value3 = ExpressHelper.Calc("DATEPART(YYYY, GETDATE())");  //SQLServer 语法
+            Console.WriteLine(value3);  //2019
+
+
+            //注册自定义常量
+            object value4 = ExpressHelper.Calc(" PI ");
+            Console.WriteLine(value4);  //3.14159265358979
+
+            ExpressHelper.RegisterConst("PI", new ExpressSlice { Express = "PI", ExpressType = ExpressType.Double, MetaValue = 3.14999999 });
+            object value5 = ExpressHelper.Calc("PI");
+            Console.WriteLine(value5);  //3.14999999
+
+
+
+        }
+
         public static void Main()
         {
+            Main3();
+            return;
+
             //显示 Logo 信息
             TestHelper.WriteLine("InkFx.Express");
             TestHelper.WriteLine("    ——最稳、最快、最易扩展的 表达式算法框架");
@@ -40,6 +74,10 @@ namespace InkFx.Express.Test
             TestHelper.WriteLine("按任意键 退出测试...");
             Console.ReadKey();
         }
+
+
+
+
 
     }
 

@@ -17,7 +17,7 @@ namespace InkFx.Express
         /// <summary>
         /// 数据类型
         /// </summary>
-        public ExpressType ExpressType { get; internal set; }
+        public ExpressType ExpressType { get; set; }
 
 
         /// <summary>
