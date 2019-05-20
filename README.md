@@ -96,7 +96,7 @@ list.Add(new Student() { Name = "张三", Age = 20 });
 list.Add(new Student() { Name = "李四", Age = 19 });
 list.Add(new Student() { Name = "王五", Age = 20 });
 List<Student> list2 = ExpressHelper.Filter<Student>("[Age]==20", list);
-Console.WriteLine(list2.Count);  //2 集合包含: 张三、李四
+Console.WriteLine(list2.Count);  //2 集合包含: 张三、王五
 
 
 
